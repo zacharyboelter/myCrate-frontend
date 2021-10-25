@@ -29,7 +29,7 @@ function Index(props) {
 
             <div key={album._id} className="album">
                 <img src={album.image} alt={album.name} />
-                <Link to {...`/record/${album._id}`}><h1>{album.name}</h1></Link>
+                <Link to={`/record/${album._id}`}><h1>{album.name}</h1></Link>
                 <h3>{album.band}</h3>
             </div>
         ));

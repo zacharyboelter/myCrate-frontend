@@ -13,42 +13,42 @@ function Show(props) {
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.updateRecord(editForm, record._id);
+        props.updateRecord(editForm, album._id);
         props.history.push("/");
     }
 
     const removeRecord = () => {
-        props.deletePeople(record._id);
+        props.deleteRecord(album._id);
         props.history.push("/");
     }
     return (
         <div className="album">
-            <img src={record.image} alt={record.name} />
-            <h1>{record.name}</h1>
-            <h2>{record.band}</h2>
+            <img src={album.image} alt={album.name} />
+            <h1>{album.name}</h1>
+            <h2>{album.band}</h2>
             <button id="delete" onClick={removeRecord}>
-        DELETE
-      </button>
+                DELETE
+            </button>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={editForm.name}
                     name="name"
-                    placeholder="Name of Record"
+                    placeholder="name"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     value={editForm.image}
                     name="image"
-                    placeholder="Image URL"
+                    placeholder="image url"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     value={editForm.band}
                     name="band"
-                    placeholder="Name of Artist"
+                    placeholder="band"
                     onChange={handleChange}
                 />
                 <input type="submit" value="Update Record" />

@@ -6,7 +6,7 @@ import Show from "../pages/Show";
 function Main(props) {
     const [record, setRecord] = useState(null);
 
-    const URL = "https://record-collection-react.herokuapp.com/record";
+    const URL = "https://record-collection-react.herokuapp.com/record/";
 
     const getRecord = async () => {
         const response = await fetch(URL);
@@ -14,24 +14,24 @@ function Main(props) {
         setRecord(data);
     };
 
-    const createRecord = async (record) => {
+    const createRecord = async (album) => {
         await fetch(URL, {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json",
             },
-            body: JSON.stringify(record),
+            body: JSON.stringify(album),
         });
         getRecord();
     };
 
-    const updateRecord = async (record, id) => {
+    const updateRecord = async (album, id) => {
         await fetch(URL + id, {
             method: "PUT",
             headers: {
                 "Content-Type": "Application/json"
             },
-            body: JSON.stringify(record),
+            body: JSON.stringify(album),
         });
         getRecord();
     }
