@@ -1,9 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import { Button } from '@material-ui/core';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    image: {
+        height: 'auto',
+        maxHeight: 400,
+        width: 'auto',
+        maxWidth: 250,
+    }
+}))
 
 function Index(props) {
+    const classes = useStyles();
 
     const [newForm, setNewForm] = useState({
         name: "",
@@ -26,15 +45,43 @@ function Index(props) {
     };
 
     const loaded = () => {
-        console.log("hello world");
-        return props.record.map((album) => (
 
-            <div key={album._id} className="album">
-                <img src={album.image} alt={album.name} />
-                <Link to={`/record/${album._id}`}><h1>{album.name}</h1></Link>
-                <h3>{album.band}</h3>
+        return (
+            <div className={classes.root}>
+                <Grid
+                    container
+                    spacing={2}
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="stretch"
+                >
+
+                    {props.record.map((album) => (
+                        <Grid item xs={2} sm={4} m={3} display="flex">
+                            <Card sx={{ maxWidth: 345 }}>
+                                <div key={album._id} className="album">
+                                    <CardMedia className={classes.image}>
+                                        <img src={album.image} alt={album.name} />
+                                    </CardMedia>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                            <Link to={`/record/${album._id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}><h1>{album.name}</h1></Link>
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            <h3>{album.band}</h3>
+                                        </Typography>
+                                    </CardContent>
+                                </div>
+                                <CardActions>
+                                    <Button size="small" style={{ color: 'inherit', textDecoration: 'inherit' }}>Share</Button>
+                                    <Button size="small"><Link to={`/record/${album._id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>Learn More</Link></Button>
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
             </div>
-        ));
+        )
     };
     const loading = () => {
         return <h1>Loading...</h1>;
@@ -68,6 +115,7 @@ function Index(props) {
                 <br />
                 <Button color="primary" type="submit" value="Add Record" variant="outlined"> Add Record </Button>
             </form>
+            <hr />
             {props.record ? loaded() : loading()}
         </section>
     );

@@ -36,6 +36,7 @@ function Show(props) {
     }
     return (
         <div className="album">
+            
             <img src={album.image} alt={album.name} />
             <h1>{album.name}</h1>
             <h2>{album.band}</h2>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Index from "../pages/Index";
 import Show from "../pages/Show";
-
+import { Grid } from '@material-ui/core';
 
 function Main(props) {
     const [record, setRecord] = useState(null);
@@ -52,11 +52,16 @@ function Main(props) {
         <main>
             <Switch>
                 <Route exact path="/">
-                    <Index record={record} createRecord={createRecord} />
+                    <Grid conatiner direction="row">
+                        <Grid item >
+                            <Index record={record} createRecord={createRecord} />
+                        </Grid>
+                    </Grid>
                 </Route>
                 <Route
                     path="/record/:id"
                     render={(rp) => (
+
                         <Show
                             record={record}
                             updateRecord={updateRecord}
