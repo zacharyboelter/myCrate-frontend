@@ -13,11 +13,16 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
-    image: {
-        height: 'auto',
-        maxHeight: 400,
-        width: 'auto',
-        maxWidth: 250,
+    Card: {
+        width: 300,
+        height: 600,
+        margin: 'auto'
+    },
+    CardMedia: {
+        height: 550,
+        width: '100%',
+        objectFit: 'cover'
+
     }
 }))
 
@@ -58,7 +63,7 @@ function Index(props) {
 
                     {props.record.map((album) => (
                         <Grid item xs={2} sm={4} m={3} display="flex">
-                            <Card sx={{ maxWidth: 345 }}>
+                            <Card className={classes.card} sx={{ maxWidth: 345 }}>
                                 <div key={album._id} className="album">
                                     <CardMedia className={classes.image}>
                                         <img src={album.image} alt={album.name} />

@@ -4,9 +4,24 @@ import { makeStyles } from '@material-ui/core/styles'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import Input from '@mui/material/Input';
 
 const useStyles = makeStyles({
+    root: {
+        flexGrow: 1,
+    },
+    Card: {
+        width: 300,
+        margin: 'auto'
+    },
+    CardMedia: {
+        height: 550,
+        width: '100%',
+        objectFit: 'cover'
 
+    }
 });
 
 
@@ -35,12 +50,15 @@ function Show(props) {
         props.history.push("/");
     }
     return (
-        <div className="album">
-            
-            <img src={album.image} alt={album.name} />
-            <h1>{album.name}</h1>
-            <h2>{album.band}</h2>
-            
+        <div>
+            <Card className={classes.card}>
+                <CardMedia>
+                    <img src={album.image} alt={album.name} />
+                </CardMedia>
+                <h1>{album.name}</h1>
+                <h2>{album.band}</h2>
+            </Card>
+            <br />
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -68,8 +86,8 @@ function Show(props) {
                 <br />
                 <Button variant="outlined" color="" type="submit" value="Update Record" >Update Record </Button>
                 <Button variant="outlined" color="secondary" id="delete" onClick={removeRecord}>
-                DELETE
-            </Button>
+                    DELETE
+                </Button>
             </form>
         </div>
     );
