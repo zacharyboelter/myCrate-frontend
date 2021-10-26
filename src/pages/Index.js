@@ -62,7 +62,7 @@ function Index(props) {
                 >
 
                     {props.record.map((album) => (
-                        <Grid item xs={2} sm={4} m={3} display="flex">
+                        <Grid item xs={12} sm={4} m={3} display="flex">
                             <Card className={classes.card} sx={{ maxWidth: 345 }}>
                                 <div key={album._id} className="album">
                                     <CardMedia className={classes.image}>
