@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 const useStyles = makeStyles({
 
@@ -10,7 +13,7 @@ const useStyles = makeStyles({
 function Show(props) {
     const classes = useStyles();
 
-    
+
     const id = props.match.params.id
     const record = props.record
     const album = record.find(p => p._id === id)

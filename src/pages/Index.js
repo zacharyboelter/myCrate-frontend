@@ -49,7 +49,7 @@ function Index(props) {
                     placeholder="Name of Album"
                     onChange={handleChange}
                 />
-                <hr />
+                <br />
                 <input
                     type="text"
                     value={newForm.image}
