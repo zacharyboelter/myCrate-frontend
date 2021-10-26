@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
+import { Button } from '@material-ui/core';
+
 
 function Index(props) {
 
@@ -47,6 +49,7 @@ function Index(props) {
                     placeholder="Name of Album"
                     onChange={handleChange}
                 />
+                <hr />
                 <input
                     type="text"
                     value={newForm.image}
@@ -54,6 +57,7 @@ function Index(props) {
                     placeholder="Image URL"
                     onChange={handleChange}
                 />
+                <br />
                 <input
                     type="text"
                     value={newForm.band}
@@ -61,7 +65,8 @@ function Index(props) {
                     placeholder="Name of Artist"
                     onChange={handleChange}
                 />
-                <input type="submit" value="Add Record" />
+                <br />
+                <Button color="primary" type="submit" value="Add Record" variant="outlined"> Add Record </Button>
             </form>
             {props.record ? loaded() : loading()}
         </section>

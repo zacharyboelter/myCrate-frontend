@@ -1,6 +1,16 @@
 import { useState } from "react";
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+
+});
+
 
 function Show(props) {
+    const classes = useStyles();
+
+    
     const id = props.match.params.id
     const record = props.record
     const album = record.find(p => p._id === id)
@@ -26,9 +36,7 @@ function Show(props) {
             <img src={album.image} alt={album.name} />
             <h1>{album.name}</h1>
             <h2>{album.band}</h2>
-            <button id="delete" onClick={removeRecord}>
-                DELETE
-            </button>
+            
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -37,6 +45,7 @@ function Show(props) {
                     placeholder="name"
                     onChange={handleChange}
                 />
+                <br />
                 <input
                     type="text"
                     value={editForm.image}
@@ -44,6 +53,7 @@ function Show(props) {
                     placeholder="image url"
                     onChange={handleChange}
                 />
+                <br />
                 <input
                     type="text"
                     value={editForm.band}
@@ -51,7 +61,11 @@ function Show(props) {
                     placeholder="band"
                     onChange={handleChange}
                 />
-                <input type="submit" value="Update Record" />
+                <br />
+                <Button variant="outlined" color="" type="submit" value="Update Record" >Update Record </Button>
+                <Button variant="outlined" color="secondary" id="delete" onClick={removeRecord}>
+                DELETE
+            </Button>
             </form>
         </div>
     );
