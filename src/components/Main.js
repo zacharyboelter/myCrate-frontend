@@ -7,7 +7,7 @@ import { Grid } from '@material-ui/core';
 function Main(props) {
     const [record, setRecord] = useState(null);
 
-    const URL = "https://record-collection-react.herokuapp.com/record/";
+    const URL = "https://mycrate.onrender.com/record/";
 
     const getRecord = async () => {
         const response = await fetch(URL);
